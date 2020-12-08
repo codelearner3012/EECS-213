@@ -6,7 +6,7 @@ def area_calculation(l1_cs, l2_cs, l1_a, l2_a):
     l1_ac = {2:0.25 ,4:0.5, 8:1}
     l2_ac = {2:0.25 ,4:0.5, 8:1}
     cost = 0.9115*l1_cc[l1_cs] +  0.6785*l2_cc[l2_cs] + 0.9803*l1_a + 0.9487*l2_a
-    return int(cost)
+    return round(float(cost),6)
 
 
 access_latency = {"16kB":3, "32kB":3, "64kB":3, "128kB":9, "512kB": 18, "1MB":24, "2MB":33}
@@ -42,17 +42,14 @@ for file in files:
                     y = y.split("#")[0]
                     dcache_num_hits = y
                     dcache_hit_lat = int(y)* access_latency[l1_cs]
-                    #print dcache_num_hits + " * " + str(access_latency[l1_cs])
                 elif x[0]=="system.cpu.icache.overall_hits::total":
                     y = x[1].strip()
                     y = y.split("#")[0]
                     icache_num_hits = y
                     icache_hit_lat = int(y) * access_latency[l1_cs]
-                    #print icache_num_hits + " * " + str(access_latency[l1_cs])
                 elif x[0] in v_v_2: 
                     y = x[1].strip()
                     y = y.split("#")[0]
-                    #print y
                     total_latency = total_latency + int(y)
             total_latency = total_latency + dcache_hit_lat + icache_hit_lat
             # Total memory access latency we calculated
@@ -94,10 +91,10 @@ for i,c in enumerate(config):
 
 #minimum evaluation cost 
 min_eval_cost = np.min(Y[:, 3])
-print "Configurations with the minimum total_cost = " + str(min_eval_cost)
+print "Configurations with the minimum EVALUATION COST"
 for i,c in enumerate(config):
     if Y[i][3] == min_eval_cost:
-        print c
+        print c + " sim_seconds:" + str(measurement_list[i][0]) + " area cost:" + str(measurement_list[i][2]) + " evaluation cost:" + str(measurement_list[i][3]) 
 
 #for i,c in enumerate(config):
 #    print c + " " + str(measurement_list[i])
