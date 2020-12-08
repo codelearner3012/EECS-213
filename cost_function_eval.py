@@ -6,7 +6,7 @@ def area_calculation(l1_cs, l2_cs, l1_a, l2_a):
     l1_ac = {2:0.25 ,4:0.5, 8:1}
     l2_ac = {2:0.25 ,4:0.5, 8:1}
     cost = 0.9115*l1_cc[l1_cs] +  0.6785*l2_cc[l2_cs] + 0.9803*l1_a + 0.9487*l2_a
-    return round(float(cost),6)
+    return cost
 
 
 access_latency = {"16kB":3, "32kB":3, "64kB":3, "128kB":9, "512kB": 18, "1MB":24, "2MB":33}
@@ -71,14 +71,14 @@ min_ss_seconds = np.min(Y[:,0])
 print "Configurations with the minimum sim_seconds = " + str(min_ss_seconds)
 for i,c in enumerate(config):
     if Y[i][0] == min_ss_seconds:
-        print c
+        print c + " " + str(measurement_list[i])
 
 #minimum latency
-min_latency= np.min(Y[:,1])
-print "Configurations with the minimum access latency = " + str(min_latency)
-for i,c in enumerate(config):
-    if Y[i][1] == min_latency:
-        print c
+#min_latency= np.min(Y[:,1])
+#print "Configurations with the minimum access latency = " + str(min_latency)
+#for i,c in enumerate(config):
+#    if Y[i][1] == min_latency:
+#        print c
 
 
 #minimum area-cost
@@ -86,7 +86,7 @@ min_area_cost = np.min(Y[:,2])
 print "Configurations with the minimum area_cost = " + str(min_area_cost)
 for i,c in enumerate(config):
     if Y[i][2] == min_area_cost:
-        print c
+        print c + " " + str(measurement_list[i])
 
 
 #minimum evaluation cost 
