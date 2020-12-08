@@ -5,7 +5,7 @@ def area_calculation(l1_cs, l2_cs, l1_a, l2_a):
     l2_cc = {"128kB":50 , "512kB":100 ,"1MB":200, "2MB":400}
     l1_ac = {2:0.25 ,4:0.5, 8:1}
     l2_ac = {2:0.25 ,4:0.5, 8:1}
-    cost = 0.9115*l1_cc[l1_cs] +  0.6785*l2_cc[l2_cs] + 0.9803*l1_a[l1_ac] + 0.9487*l2_a[l2_ac]
+    cost = 0.9115*l1_cc[l1_cs] +  0.6785*l2_cc[l2_cs] + 0.9803*l1_ac[l1_a] + 0.9487*l2_ac[l2_a]
     return round(float(cost),6)
 
 
