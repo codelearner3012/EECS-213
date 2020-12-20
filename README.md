@@ -1,5 +1,5 @@
-# EECS-213
-GEM5 evaluation
+# GEM-5 Stats Analysis
+This project collects GEM5 statistics and analyzes them to calculate and evaluate a cost function. The cost function takes into account the cache hit and miss rates and the clock cycles spent fetching from lower level memory. 
 
-1) run.sh: is a bash script to collect and store all the different stats in m5out
-2) cost_function_eval.py: runs through the simulated results and gives out the resulting statistics and optimal cost function 
+run.sh: bash script to collect and store all the simulation statistics in m5out
+cost_function_eval.py: runs through the simulated results and gives out the resulting statistics and optimal configuration based on the calculated cost function.
